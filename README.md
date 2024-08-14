@@ -15,7 +15,7 @@ A simple React application for managing comments and replies with features for a
 
 - Add, edit, and delete comments
 - Add, edit, and delete replies to comments
-- Sort comments and replies by date
+- Sort comments and replies by date (ascending and descending)
 - Responsive and clean UI
 - Data persists in local storage
 
@@ -25,7 +25,6 @@ A simple React application for managing comments and replies with features for a
 - **Redux**: State management library
 - **Redux Toolkit**: Simplified Redux development
 - **React-Redux**: Official React bindings for Redux
-- **FontAwesome**: Icons for user interface
 
 ## Installation
 
@@ -71,7 +70,7 @@ A simple React application for managing comments and replies with features for a
    - Click the delete button to remove a reply.
 
 7. **Sorting:**
-   - Click "Sort By: Date" to sort comments and replies by date.
+   - Click "Sort By Date" to toggle sorting comments and replies by date. The initial sort order is ascending, indicated by an upward arrow (▲). Clicking the button again will sort in descending order, indicated by a downward arrow (▼).
 
 ## Error Handling
 
