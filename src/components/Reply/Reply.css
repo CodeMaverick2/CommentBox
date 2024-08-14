@@ -1,0 +1,48 @@
+.reply {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  position: relative;
+  background-color: #f5f5f5;
+}
+
+.reply-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reply-body {
+  margin-top: 10px;
+}
+
+.reply-body p {
+  margin-bottom: 5px;
+}
+
+.reply-body small {
+  display: block;
+  font-size: 12px;
+  color: #888;
+}
+
+.delete-reply {
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -25px;
+  position: absolute;
+  overflow: hidden;
+  height: 30px;
+  width: 30px;
+  background: black;
+  border-radius: 15px;
+}
+
+.delete-reply:hover{
+  background: white;
+  color: black;
+}
