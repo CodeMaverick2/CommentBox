@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   comments: JSON.parse(localStorage.getItem('comments')) || [],
+  sortOrder: 'ascending' 
 };
 
 export const commentsSlice = createSlice({
@@ -52,17 +53,42 @@ export const commentsSlice = createSlice({
       localStorage.setItem('comments', JSON.stringify(state.comments));
     },
     sortByDate: (state) => {
-      state.comments.sort((a, b) => new Date(b.date) - new Date(a.date));
+      state.comments.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return state.sortOrder === 'ascending' ? dateA - dateB : dateB - dateA;
+      });
       state.comments.forEach(comment => {
         if (comment.replies) {
-          comment.replies.sort((a, b) => new Date(b.date) - new Date(a.date));
+          comment.replies.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return state.sortOrder === 'ascending' ? dateA - dateB : dateB - dateA;
+          });
         }
       });
-      
       localStorage.setItem('comments', JSON.stringify(state.comments));
     },
+    toggleSortOrder: (state) => {
+      state.sortOrder = state.sortOrder === 'ascending' ? 'descending' : 'ascending';
+      state.comments.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return state.sortOrder === 'ascending' ? dateA - dateB : dateB - dateA;
+      });
+      state.comments.forEach(comment => {
+        if (comment.replies) {
+          comment.replies.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return state.sortOrder === 'ascending' ? dateA - dateB : dateB - dateA;
+          });
+        }
+      });
+      localStorage.setItem('comments', JSON.stringify(state.comments));
+    }
   },
 });
 
-export const { addComment, editComment, deleteComment, addReply,editReply, deleteReply, sortByDate } = commentsSlice.actions;
+export const { addComment, editComment, deleteComment, addReply, editReply, deleteReply, sortByDate, toggleSortOrder } = commentsSlice.actions;
 export default commentsSlice.reducer;
